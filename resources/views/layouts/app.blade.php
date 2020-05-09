@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                   <img src="{{ url('images/logo.png') }}" width="200" alt="">
+                   <img src="{{ url('images/logo.png') }}" width="100" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -59,7 +59,7 @@
                                      $notif = \App\PesananDetail::where('pesanan_id', $pesanan_utama->id)->count(); 
                                     }
                                 ?>
-                                <a class="nav-link" href="{{ url('check-out') }}">
+                                <a class="nav-link" href="{{ url('checkout') }}">
                                     <i class="fa fa-shopping-cart"></i>
                                     @if(!empty($notif))
                                     <span class="badge badge-danger">{{ $notif }}</span>
@@ -101,8 +101,8 @@
             @yield('content')
         </main>
     </div>
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
+    @include('sweetalert::alert')
 </body>
 </html>
