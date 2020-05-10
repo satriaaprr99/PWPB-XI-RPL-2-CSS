@@ -52,6 +52,15 @@
                             @endif
                         @else
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ url('korona') }}">Data Covid-19</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Berita</a>
+                        </li>
+                        <li class="nav-item">
+                             <a class="nav-link" href="">Toko Kesehatan</a>
+                        </li>
+                        <li class="nav-item">
                                 <?php
                                  $pesanan_utama = \App\Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
                                  if(!empty($pesanan_utama))

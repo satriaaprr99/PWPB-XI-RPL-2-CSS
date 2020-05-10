@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/korona', 'CovidController@dataCovid');
+Route::get('/korona', 'HomeController@korona');
 
 Auth::routes();
 
