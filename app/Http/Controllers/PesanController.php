@@ -81,14 +81,17 @@ class PesanController extends Controller
     	$pesanan->update();
 
     	Alert::success('Pesanan masuk keranjang', 'Success Message');
-    	return redirect('home');
+    	return redirect('checkout');
 
 
     }
 
     public function checkout(){
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
-        $pesanan_detail = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+
+        if(!empty($pesanan)){
+             $pesanan_detail = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        }
 
         return view('pesan.checkout', compact('pesanan', 'pesanan_detail'));
     }
@@ -97,12 +100,29 @@ class PesanController extends Controller
         $pesanan_detail = PesananDetail::where('id', $id)->first();
         
         $pesanan = Pesanan::where('id', $pesanan_detail->pesanan_id)->first();
-        $pesanan->jumlah_harga = $pesanan->jumlah_harga - $pesanan_detail->jumlah_harga;
+        $pesanan->jumlah_harga = $pesanan->jumlah_harga-$pesanan_detail->jumlah_harga;
         $pesanan->update();
 
         $pesanan_detail->delete();
         Alert::error('Pesanan berhasil dihapus', 'Hapus');
         return redirect('checkout');
+    }
+
+    public function konfirmasi(){
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $pesanan_id = $pesanan->id;
+        $pesanan->status = 1;
+        $pesanan->update();
+
+        $pesanan_detail = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        foreach ($pesanan_detail as $pesanan_detail) {
+            $barang = Barang::where('id', $pesanan_detail->barang_id)->first();
+            $barang->stok = $barang->stok-$pesanan_detail->jumlah;
+            $barang->update();
+        }
+
+        Alert::success('Pesanan masuk keranjang', 'Success Message');
+        return redirect('home');
     }
     
 }

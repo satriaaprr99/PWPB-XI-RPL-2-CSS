@@ -45,8 +45,8 @@
                                 <td align="right">Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
                                 <td>
                                     <form action="{{ url('checkout') }}/{{ $pesanan_detail->id }}" method="post">
+                                        @method('DELETE')
                                         @csrf
-                                        {{ method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data ?');"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
@@ -56,7 +56,7 @@
                                 <td colspan="5" align="right"><strong>Total Harga :</strong></td>
                                 <td align="right"><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
                                 <td>
-                                    <a href="{{ url('konfirmasi-check-out') }}" class="btn btn-success" onclick="return confirm('Anda yakin akan Check Out ?');">
+                                    <a href="{{ url('konfirmasi-checkout') }}" class="btn btn-success" onclick="return confirm('Anda yakin akan Check Out ?');">
                                         <i class="fa fa-shopping-cart"></i> Check Out
                                     </a>
                                 </td>
