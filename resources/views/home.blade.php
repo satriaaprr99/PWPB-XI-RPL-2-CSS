@@ -7,6 +7,8 @@
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
           </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -15,6 +17,16 @@
             </div>
         </div>
         <div class="carousel-item">
+            <img src="{{ url('images/slide2.jpg') }}" class="d-block w-60" alt="..." width="100%">
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url('images/slide3.jpg') }}" class="d-block w-60" alt="..." width="100%">
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+        </div>
+         <div class="carousel-item">
             <img src="{{ url('images/slide2.jpg') }}" class="d-block w-60" alt="..." width="100%">
             <div class="carousel-caption d-none d-md-block">
             </div>
