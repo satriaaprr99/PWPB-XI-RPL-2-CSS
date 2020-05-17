@@ -35,4 +35,4 @@ Route::post('profile', 'ProfileController@update');
 Route::get('history', 'HistoryController@index');
 Route::get('history/{id}', 'HistoryController@detail');
 
-
+Route::get('/toko', 'HomeController@index');

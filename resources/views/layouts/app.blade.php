@@ -58,7 +58,7 @@
                             <a class="nav-link" href="">Berita</a>
                         </li>
                         <li class="nav-item">
-                             <a class="nav-link" href="">Toko Kesehatan</a>
+                             <a class="nav-link" href="{{ url('toko') }}">Toko Kesehatan</a>
                         </li>
                         <li class="nav-item">
                                 <?php
