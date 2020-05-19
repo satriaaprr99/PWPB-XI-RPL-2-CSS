@@ -44,11 +44,7 @@
                                 <td align="right">Rp. {{ number_format($pesanan_detail->barang->harga) }}</td>
                                 <td align="right">Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
                                 <td>
-                                    <form action="{{ url('checkout') }}/{{ $pesanan_detail->id }}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data ?');"><i class="fa fa-trash"></i></button>
-                                    </form>
+                                    <a class="btn btn-danger btn-sm" href="{{ url('checkout') }}/{{ $pesanan_detail->id }}"onclick="return confirm('Anda yakin akan menghapus data ?');" ><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @endforeach
