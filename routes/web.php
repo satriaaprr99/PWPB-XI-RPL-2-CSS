@@ -38,3 +38,7 @@ Route::get('history/{id}', 'HistoryController@detail');
 Route::get('/toko', 'HomeController@toko');
 
 Route::get('admin', 'AdminController@index');
+Route::post('/admin/tambah', 'AdminController@tambah');
+Route::get('/admin/{id}/edit', 'AdminController@edit');
+Route::post('/admin/{id}/edit', 'AdminController@update');
+Route::get('admin/{id}', 'AdminController@hapus');
