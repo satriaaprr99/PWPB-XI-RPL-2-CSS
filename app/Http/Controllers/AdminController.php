@@ -33,7 +33,7 @@ class AdminController extends Controller
         $status = \DB::table('barangs')->insert($input);
 
         if ($status) {
-            return redirect('/admin')->with('success','Data Berhasil ditambahkan');
+            return redirect('/admin')->with('success','Data Berhasil Ditambahkan');
         } else {
             return redirect('/admin/tambah')->with('error', 'Data Gagal Ditambahkan');
         }
@@ -46,8 +46,36 @@ class AdminController extends Controller
         return view('admin.edit', $data);
     }
 
-    public function hapus(){
-    	$data['barangs'] = DB::table('barangs')->get();
-    	return view('admin.index', $data);
+    public function update(Request $request,$id){
+    	$rule = [
+            'nama_barang' => 'required|string',
+            'harga' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'keterangan' => 'required',
+            'gambar' => 'required',
+        ];
+        $this->validate($request, $rule);
+
+        $input = $request->all();
+        unset($input['_token']);
+        unset($input['_method']);
+
+        $status = \DB::table('barangs')->where('id', $id)->update($input);
+
+        if ($status) {
+            return redirect('/admin')->with('success','Data Berhasil Diupdate');
+        } else {
+            return redirect('/siswa/{id}/edit')->with('error', 'Data Gagal Diupdate');
+        }
+    }
+
+    public function hapus(Request $request, $id){
+    	 $status = \DB::table('barangs')->where('id', $id)->delete();
+
+    	 if ($status) {
+            return redirect('/admin')->with('success','Data Berhasil Dihapus');
+        } else {
+            return redirect('/admin')->with('error', 'Data Gagal Dihapus');
+        }
     }
 }

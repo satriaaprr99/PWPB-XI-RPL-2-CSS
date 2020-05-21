@@ -2,23 +2,6 @@
 
 @section('content')
 
-@if(session('success'))
-<div class="container">
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Selamat!</strong> {{ session('success') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-</div>
-@endif
-
-@if(session('error'))
-<div class="alert alert-danger" role="alert">
-  {{ session('error') }}
-</div>
-@endif
-
 @if(Auth::user()->status == 'admin')
 <div class="container">
   <div class="p-3 mb-2 bg-dark text-white">Data Barang</div>
@@ -34,7 +17,7 @@
           <th scope="col">Harga</th>
           <th scope="col">Stok</th>
           <th scope="col">Keterangan</th>
-          <th scope="col" colspan="2">Aksi</th>
+          <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -48,10 +31,8 @@
           <td>{{ $b->stok }}</td>
           <td>{{ $b->keterangan }}</td>
           <td>
-            <a class="btn btn-danger btn-sm" href="{{ url('admin') }}/{{ $b->id }}" onclick="return confirm('Anda yakin akan menghapus data ?');" ><i class="fa fa-trash"></i></a>
-          </td>
-          <td>
             <a class="btn btn-primary btn-sm" href="/admin/{{$b->id}}/edit"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-danger btn-sm" href="/admin/{{$b->id}}/hapus" onclick="return confirm('Anda yakin akan menghapus data ?');" ><i class="fa fa-trash"></i></a> 
           </td>
         </tr>
           @endforeach
