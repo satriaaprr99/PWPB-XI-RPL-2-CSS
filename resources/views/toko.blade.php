@@ -3,9 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12 mb-4">
-            <img src="{{ url('images/logo.png') }}" class="rounded mx-auto d-block" width="300">
-        </div>
+        
         @foreach($barangs as $barang)
         <div class="col-md-4 ">
             <div class="card mb-4">
@@ -18,7 +16,7 @@
                         <strong>Keterangan :</strong> <br>
                         {{ $barang->keterangan }}
                     </p>
-                    <a href="{{ url('pesan') }}/{{ $barang->id }}" class="btn btn-primary">Beli</a>
+                    <a href="{{ url('pesan') }}/{{ $barang->id }}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Beli</a>
                 </div>
             </div>
         </div>
