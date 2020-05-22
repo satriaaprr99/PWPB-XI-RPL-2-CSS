@@ -20,8 +20,11 @@
                     <table class="table">
                         <tbody>
                             <tr>
+                                <img src="{{$user->getAvatar()}}" width="100">
+                            </tr>
+                            <tr>
                                 <td>Nama</td>
-                                <td width="10">:</td>
+                                <td>:</td>
                                 <td>{{ $user->name }}</td>
                             </tr>
                             <tr>
@@ -41,106 +44,71 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <h4><i class="fa fa-pencil-alt"></i> Edit Profile</h4>
-                    <form method="POST" action="{{ url('profile') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="nohp" class="col-md-2 col-form-label text-md-right">No. HP</label>
-
-                            <div class="col-md-6">
-                                <input id="nohp" type="text" class="form-control @error('nohp') is-invalid @enderror" name="nohp" value="{{ $user->nohp }}" required autocomplete="nohp" autofocus>
-
-                                @error('nohp')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="alamat" class="col-md-2 col-form-label text-md-right">Alamat</label>
-
-                            <div class="col-md-6">
-                                <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" required="">{{ $user->alamat }}</textarea>
-
-                                @error('alamat')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-2 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-2">
-                                <button type="submit" class="btn btn-primary">
-                                    Save
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-pencil-alt"></i> Edit Profile
+                    </button>
                 </div>
             </div>
         </div>
         
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{{ url('profile') }}" method="post" enctype="multipart/form-data">
+              @csrf
+
+              <div class="form-group">
+                <label for="gambar">Upload Gambar</label>
+                <input name="gambar" type="file" class="form-control" id="gambar" value="{{ $user->gambar }}">
+              </div>
+
+              <div class="form-group">
+                <label for="name">Nama</label>
+                <input name="name" type="text" class="form-control" id="name" value="{{ $user->name }}">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" type="email" class="form-control" id="email" value="{{ $user->email }}">
+              </div>
+
+              <div class="form-group">
+                <label for="nohp">No.HP</label>
+                <input name="nohp" type="text" class="form-control" id="nohp" value="{{ $user->nohp }}">
+              </div>
+
+              <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <textarea name="alamat" id="alamat" class="form-control">{{ $user->alamat }}</textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" class="form-control" id="password" disabled="">
+              </div>
+
+              <div class="form-group">
+                <label for="password_confirmation">Confirm Password</label>
+                <input name="password_confirmation" type="password" class="form-control" id="password_confirmation" disabled="">
+              </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+           </form>
+        </div>
+      </div>
+    </div>
+
     </div>
 </div>
 @endsection
