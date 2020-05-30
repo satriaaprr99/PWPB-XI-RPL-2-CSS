@@ -29,6 +29,13 @@ Route::get('checkout', 'PesanController@checkout');
 Route::get('checkout/{id}','PesanController@delete');
 Route::get('konfirmasi-checkout', 'PesanController@konfirmasi');
 
+Route::get('/berita', 'BeritaController@index');
+Route::get('/berita/create', 'BeritaController@create');
+Route::post('/berita', 'BeritaController@store');
+
+Route::get('/berita/{id}/edit', 'BeritaController@edit');
+Route::patch('/berita/{id}', 'BeritaController@update');
+
 Route::get('profile', 'ProfileController@index');
 Route::post('profile', 'ProfileController@update');
 

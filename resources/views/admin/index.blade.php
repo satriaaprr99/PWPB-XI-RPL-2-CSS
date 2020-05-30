@@ -3,6 +3,11 @@
 @section('content')
 
 @if(Auth::user()->status == 'admin')
+<style type="text/css">
+  div[class=panel-body]{
+    margin-left: 50px;
+  }
+</style>
 <div class="container">
   <div class="p-3 mb-2 bg-dark text-white">Data Barang</div>
     <table class="table">
@@ -31,7 +36,9 @@
 </div>
 @else
 <div class="panel-body">
-  KAMU BUKAN ADMIN!!
+  KAMU BUKAN ADMIN!!<br>
+  ASLINA LURD IEU MAH ENTE SANES ADMIN!!!<br>
+  BALIK DEUI WEH
 </div>
 @endif
 @endsection
