@@ -25,19 +25,33 @@ class ProfileController extends Controller
             'password'  => 'confirmed',
         ]);
 
+
+
     	$user = User::where('id', Auth::user()->id)->first();
     	$user->name = $request->name;
     	$user->email = $request->email;
     	$user->nohp = $request->nohp;
     	$user->alamat = $request->alamat;
+
+        if($request->hasFile('gambar')){
+            $request->file('gambar')->move('avatar/', $request->file('gambar')->getClientOriginalName());
+            $user->gambar = $request->file('gambar')->getClientOriginalName();
+            $user->save();
+        } 
+
     	if(!empty($request->password))
     	{
     		$user->password = Hash::make($request->password);
     	}
     	
-    	$user->update();
+    	$status = $user->update();
 
-    	Alert::success('User Sukses diupdate', 'Success');
-    	return redirect('profile');
+    	if ($status) {
+            return redirect('profile')->with('success','Data Berhasil DiEdit');
+        } else {
+            return redirect('profile')->with('error', 'Data Gagal DiEdit');
+        }
     }
+
+
 }

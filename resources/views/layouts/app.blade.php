@@ -95,9 +95,12 @@
                                         Riwayat Pemesanan
                                     </a>
 
+
+                                    @if(Auth::user()->status == 'admin')
                                     <a class="dropdown-item" href="{{ url('admin') }}">
                                         Halaman Admin
                                     </a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -116,6 +119,7 @@
             </div>
         </nav>
 
+            
 
         @if(session('success'))
         <div class="container">

@@ -25,4 +25,12 @@ class User extends Authenticatable
     public function pesanan(){
         return $this->hasMany('App\pesanan', 'user_id', 'id');
     }
+
+    public function getAvatar(){
+        if(!$this->gambar){
+            return asset('avatar/default.png');
+        }
+
+        return asset('avatar/' . $this->gambar);
+    }
 }

@@ -2,7 +2,6 @@
 
 @section('content')
 
-@if(Auth::user()->status == 'admin')
 <div class="container">
   <div class="p-3 mb-2 bg-dark text-white">Data Barang</div>
     <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#exampleModal">
@@ -88,9 +87,5 @@
     </div>
   </div>
 </div>
-@else
-<div class="panel-body">
-  KAMU BUKAN ADMIN!!
-</div>
-@endif
 @endsection
+
