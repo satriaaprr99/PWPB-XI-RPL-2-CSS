@@ -11,9 +11,4 @@ use App\barang;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    public function index(){        
-        $barangs = barang::paginate(20);
-        return view('/welcome', compact('barangs'));
-    }
 }
