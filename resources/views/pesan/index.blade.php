@@ -4,12 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ url('home') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
+            <a href="{{ url('toko') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
         <div class="col-md-12 mt-2">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('toko') }}">Toko Kesehatan</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $barang->nama_barang }}</li>
               </ol>
             </nav>
@@ -51,10 +52,7 @@
                                                 <button type="submit" class="btn btn-primary mt-2"><i class="fa fa-shopping-cart"></i> Masukkan Keranjang</button>
                                             </form>
                                         </td>
-                                    </tr>
-                                   
-                                    
-                                    
+                                    </tr>  
                                 </tbody>
                             </table>
                         </div>
