@@ -11,10 +11,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <title>Data Covid-19</title>
+    <style type="text/css">
+      body{
+        margin-top: -70px;
+      }
+    </style>
   </head>
   <body>
+    <header class="masthead1">
+    <div class="container">
+      <div class="masthead-subheading">Berikut adalah info kasus</div>
+      <div class="masthead-heading text-uppercase">Di Indonesia</div>
+    </div>
+  </header>
+  <br><br><br><br>
   		<div class="container">
-        <div class="p-3 mb-2 bg-dark text-white">Data Global Covid-19</div>
         <div class="row">
           <div class="col-md-4">
             <div class="bg-info box text-white">

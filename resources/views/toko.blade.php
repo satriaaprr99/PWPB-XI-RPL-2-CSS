@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style type="text/css">
+    body{
+        margin-top: 50px;
+    }
+</style>
+<body>
 <div class="container">
     <div class="row justify-content-center">
         
@@ -23,4 +30,5 @@
         @endforeach
     </div>
 </div>
+</body>
 @endsection

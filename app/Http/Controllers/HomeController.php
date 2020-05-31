@@ -36,4 +36,8 @@ class HomeController extends Controller
         $suspects = Http::get('https://api.kawalcorona.com/indonesia/provinsi')->json();
         return view('korona', compact('suspects'));
     }
+    public function berita(){
+        $berita = berita::paginate(255);
+        return view('berita', compact('berita'));
+    }
 }
