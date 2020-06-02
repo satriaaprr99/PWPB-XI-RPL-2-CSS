@@ -32,7 +32,6 @@ Route::get('konfirmasi-checkout', 'PesanController@konfirmasi');
 Route::get('/berita', 'BeritaController@index');
 Route::get('/berita/create', 'BeritaController@create');
 Route::post('/berita', 'BeritaController@store');
-
 Route::get('/berita/{id}/edit', 'BeritaController@edit');
 Route::patch('/berita/{id}', 'BeritaController@update');
 
@@ -44,8 +43,8 @@ Route::get('history/{id}', 'HistoryController@detail');
 
 Route::get('/toko', 'HomeController@toko');
 
-Route::get('admin', 'AdminController@index');
-Route::post('/admin/tambah', 'AdminController@tambah');
-Route::get('/admin/{id}/edit', 'AdminController@edit');
-Route::post('/admin/{id}/update', 'AdminController@update');
-Route::get('admin/{id}', 'AdminController@hapus');
+Route::get('admin', 'AdminController@indexbarang');
+Route::post('/admin/tambah', 'AdminController@tambahbarang');
+Route::get('/admin/{id}/edit', 'AdminController@editbarang');
+Route::post('/admin/{id}/update', 'AdminController@updatebarang');
+Route::get('admin/{id}', 'AdminController@hapusbarang');

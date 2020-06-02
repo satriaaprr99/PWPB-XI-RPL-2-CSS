@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<br><br>
 <div class="container">
   <div class="modal-body">
     <form action="/admin/{{$barangs->id}}/update" method="post" enctype="multipart/form-data">

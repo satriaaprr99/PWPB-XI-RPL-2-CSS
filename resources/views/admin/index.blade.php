@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<br><br>
 <div class="container">
   <div class="p-3 mb-2 bg-dark text-white">Data Barang</div>
     <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#exampleModal">
@@ -85,6 +85,10 @@
         </div>
       </div>
     </div>
+
+    <div class="p-3 mb-2 bg-dark text-white">Data Berita</div>
+    <a style="margin-left: 45%;" href="{{ url('/admin/Tambah') }}" class="btn btn-light">Tambah Data</a>
+
   </div>
 </div>
 @endsection

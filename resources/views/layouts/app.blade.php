@@ -25,8 +25,9 @@
     </head>
 
     <body id="page-top">
+
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="{{ url('/home') }}">Green Healthy</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
                
@@ -83,10 +84,6 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-
         <!-- Alert -->
         @if(session('success'))
         <div class="container">
@@ -104,6 +101,10 @@
           {{ session('error') }}
         </div>
         @endif
+        
+        <main class="py-4">
+            @yield('content')
+        </main>
                                     
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
