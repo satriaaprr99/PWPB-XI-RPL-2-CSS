@@ -46,7 +46,7 @@ class PesanController extends Controller
 	    	$pesanan->status = 0;
 	    	$pesanan->jumlah_harga = 0;
             $pesanan->kode = mt_rand(100000, 999999);
-	    	$status = $pesanan->save();
+	    	$pesanan->save();
     	}
     	
 
@@ -62,7 +62,7 @@ class PesanController extends Controller
 	    	$pesanan_detail->pesanan_id = $pesanan_baru->id;
 	    	$pesanan_detail->jumlah = $request->jumlah_pesan;
 	    	$pesanan_detail->jumlah_harga = $barang->harga*$request->jumlah_pesan;
-	    	$status = $pesanan_detail->save();
+	    	$pesanan_detail->save();
     	}else 
     	{
     		$pesanan_detail = PesananDetail::where('barang_id', $barang->id)->where('pesanan_id', $pesanan_baru->id)->first();
@@ -72,19 +72,16 @@ class PesanController extends Controller
     		//harga sekarang
     		$harga_pesanan_detail_baru = $barang->harga*$request->jumlah_pesan;
 	    	$pesanan_detail->jumlah_harga = $pesanan_detail->jumlah_harga+$harga_pesanan_detail_baru;
-	    	$status = $pesanan_detail->update();
+	    	$pesanan_detail->update();
     	}
 
     	//jumlah total
     	$pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
     	$pesanan->jumlah_harga = $pesanan->jumlah_harga+$barang->harga*$request->jumlah_pesan;
-    	$status = $pesanan->update();
+    	$pesanan->update();
 
-        if ($status) {
-            return redirect('/toko')->with('success','Pesanan Berhasil Masuk keranjang');
-        } else {
-            return redirect('/home')->with('error', 'Pesanan Error Masuk keranjang');
-        }
+    	Alert::success('Pesanan masuk keranjang', 'Success Message');
+    	return redirect('checkout');
 
 
     }

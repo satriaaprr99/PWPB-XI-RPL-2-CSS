@@ -24,9 +24,10 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){        
-        return view('home');
+        $barangs = barang::paginate(20);
+        return view('home', compact('barangs'));
     }
-    
+
     public function toko(){        
         $barangs = barang::paginate(20);
         return view('toko', compact('barangs'));

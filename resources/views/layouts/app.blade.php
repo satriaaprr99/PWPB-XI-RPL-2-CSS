@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8" />
@@ -12,6 +12,7 @@
         
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        
 
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -20,6 +21,7 @@
 
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="covid/css/styles.css" rel="stylesheet" />
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
 
     <body id="page-top">
@@ -51,9 +53,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
                                     <a class="dropdown-item" href="{{ url('history') }}">Riwayat Pemesanan</a>
-                                    @if(auth::user()->status == 'admin')
                                     <a class="dropdown-item" href="{{ url('admin') }}">Halaman Admin</a>
-                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -86,6 +86,24 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <!-- Alert -->
+        @if(session('success'))
+        <div class="container">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Selamat!</strong> {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div class="alert alert-danger" role="alert">
+          {{ session('error') }}
+        </div>
+        @endif
                                     
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
