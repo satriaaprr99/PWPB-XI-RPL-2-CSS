@@ -20,7 +20,6 @@ class PesanController extends Controller
     public function index($id)
     {
     	$barang = Barang::where('id', $id)->first();
-
     	return view('pesan.index', compact('barang'));
     }
 

@@ -1,13 +1,13 @@
-<?php
+<!--
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Berita extends Model
+class penggalangan extends Model
 {
-    protected $table = 'berita';
-    protected $fillable = ['judul', 'deskripsi', 'foto'];
+    protected $table = 'penggalangan';
+    protected $fillable = ['judul', 'foto', 'terkumpul', 'donatur'];
 
     public function getFoto(){
     	if (!$this->foto) {
@@ -16,4 +16,4 @@ class Berita extends Model
     	return asset('foto/' . $this->foto);
     }
 }
-?>
+ -->

@@ -4,13 +4,18 @@
 
 <style type="text/css">
     body{
-        margin-top: 50px;
+        margin-top: -25px;
     }
 </style>
 <body>
+    <header class="masthead3">
+            <div class="container">
+                <div class="masthead-subheading">Berikut adalah toko peralatan kesehatan    </div>
+                <div class="masthead-heading text-uppercase">Di Indonesia</div>
+            </div>
+        </header>
 <div class="container">
     <div class="row justify-content-center">
-        
         @foreach($barangs as $barang)
         <div class="col-md-4 ">
             <div class="card mb-4">

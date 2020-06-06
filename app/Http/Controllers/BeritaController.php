@@ -35,10 +35,10 @@ class BeritaController extends Controller
 		// $status = \App\Berita::create($input);
 
 		$berita = new \App\Berita;
-		$berita->judul = $input['judul'];
-		$berita->deskripsi = $input['deskripsi'];
-		$berita->foto = $input['foto'];
-		$status = $berita->save();
+        $berita->judul = $input['judul'];
+        $berita->deskripsi = $input['deskripsi'];
+        $berita->foto = $input['foto'];
+        $status = $berita->save();
 
 		if ($request->hasFile('foto')) {
 		  	$request->file('foto')->move('foto/', $request->file('foto')->getClientOriginalName());

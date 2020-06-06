@@ -13,7 +13,7 @@
     <title>Data Covid-19</title>
     <style type="text/css">
       body{
-        margin-top: -70px;
+        margin-top: -25px;
       }
     </style>
   </head>
@@ -24,7 +24,7 @@
       <div class="masthead-heading text-uppercase">Di Indonesia</div>
     </div>
   </header>
-  <br><br><br><br>
+  <br><br><br>
   		<div class="container">
         <div class="row">
           <div class="col-md-4">

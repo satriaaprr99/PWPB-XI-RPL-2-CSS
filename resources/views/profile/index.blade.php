@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('content')
+
+<style type="text/css">
+  body{
+      background-color: grey;
+      margin-top: 50px;
+      color: black;
+  }
+</style>
+
+<body>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -111,4 +121,5 @@
 
     </div>
 </div>
+</body>
 @endsection

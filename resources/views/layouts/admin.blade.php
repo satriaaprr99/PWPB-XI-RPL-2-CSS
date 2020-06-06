@@ -20,7 +20,6 @@
 
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="covid/css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.CSS') }}">
     </head>
 
     <body id="page-top">
@@ -42,7 +41,6 @@
                             @endif
                         @else
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('korona') }}">Data Covid</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('/donasi') }}">Donasi</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('/berita') }}">Berita</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('toko') }}">Toko</a></li>
                         <li class="nav-item">

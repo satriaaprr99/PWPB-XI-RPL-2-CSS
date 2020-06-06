@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Berita extends Model
+class donasi extends Model
 {
-    protected $table = 'berita';
-    protected $fillable = ['judul', 'deskripsi', 'foto'];
+    protected $table = 'donasi';
+    protected $fillable = ['nama', 'tanggal', 'nominal', 'foto'];
 
     public function getFoto(){
     	if (!$this->foto) {
@@ -16,4 +16,3 @@ class Berita extends Model
     	return asset('foto/' . $this->foto);
     }
 }
-?>

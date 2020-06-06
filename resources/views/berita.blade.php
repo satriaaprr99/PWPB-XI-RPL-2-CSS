@@ -23,7 +23,7 @@
 		width: 400px;
 	}
 	body{
-		margin-top: -70px;
+		margin-top: -25px;
 	}
 </style>
 
