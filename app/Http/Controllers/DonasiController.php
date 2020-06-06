@@ -37,6 +37,11 @@ class DonasiController extends Controller
 		  	$donasi->save();
 		  }  
 
+        $donasi = donasi::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $donasi->terkumpul = $donasi->terkumpul+$donasi->nominal*$request->terkumpul;
+        $status = $donasi->update();
+
+
     	if ($status) {
     		return redirect('/donasi')->with('success', 'Data berhasil ditambahkan');
     	}else{

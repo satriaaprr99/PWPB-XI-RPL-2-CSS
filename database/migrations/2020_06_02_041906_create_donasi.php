@@ -18,6 +18,7 @@ class CreateDonasi extends Migration
             $table->string('nama', '100');
             $table->date('tanggal');
             $table->integer('nominal');
+            $table->integer('terkumpul');
             $table->string('foto');
             $table->timestamps();
         });

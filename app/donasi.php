@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class donasi extends Model
 {
     protected $table = 'donasi';
-    protected $fillable = ['nama', 'tanggal', 'nominal', 'foto'];
+    protected $fillable = ['nama', 'tanggal', 'nominal', 'foto', 'terkumpul'];
 
     public function getFoto(){
     	if (!$this->foto) {

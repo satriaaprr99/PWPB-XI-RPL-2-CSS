@@ -35,7 +35,7 @@
       		<div class="masthead-heading text-uppercase">Menampilkan jumlah virus senja dan beberapa peralatan senja</div>
     	</div>
     </header>
-	<a style="margin-left: 45%;" href="{{ url('/donasi/create') }}" class="btn btn-light">Tambah Data</a>
+	<a style="margin-left: 45%; margin-top: 100px; font-size: 50px;" href="{{ url('/donasi/create') }}" class="btn btn-light">Donasi</a>
 	@foreach ($donasi as $row)
 	<table border="1" width="100%">
 		<tr>
@@ -54,6 +54,11 @@
 			<td>{{ $row->nominal }}</td>
 			<td><a href="{{ url('donasi') }}/{{ $row->id }}" class="btn btn-dark btn-block">Delete</a></td>
 		</tr>
+		<tr>
+                                <td colspan="5" align="right"><strong>Terkumpul :</strong></td>
+                                <td align="right"><strong>Rp. {{ number_format($row->terkumpul) }}</strong></td>
+
+                            </tr>
 	</table>
 	@endforeach
 </body>

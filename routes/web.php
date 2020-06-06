@@ -41,11 +41,6 @@ Route::get('/donasi/create', 'DonasiController@create');
 Route::post('/donasi', 'DonasiController@store');
 Route::get('/donasi/{id}', 'DonasiController@destroy');
 
-// Route::get('/penggalangan', 'PenggalanganController@index');
-// Route::get('/penggalangan/create', 'PenggalanganController@create');
-// Route::post('/penggalangan', 'PenggalanganController@store');
-// Route::get('/penggalangan/{id}', 'PenggalanganController@destroy');
-
 Route::get('profile', 'ProfileController@index');
 Route::post('profile', 'ProfileController@update');
 
