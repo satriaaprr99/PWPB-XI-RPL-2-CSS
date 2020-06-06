@@ -2,30 +2,13 @@
 
 @section('content')
 <style type="text/css">
-	.foto{
-		border: 1px solid;
-		text-align: center;
-		width: 400px;
-		margin-top: 100px;
-	}
-	.judul{
-		text-align: center;
-		width: 400px;
-	}
-	.deskripsi{
-		text-align: center;
-		width: 400px;
-	}
-	.button{
-		border: 1px solid;
-		text-align: center;
-		width: 400px;
-	}
 	body{
 		margin-top: -25px;
 	}
 	table{
-		margin-top: 100px; 
+		margin-top: 100px;
+		width: 100%; 
+		text-align: center;
 	}
 </style>
 <body>
@@ -35,9 +18,12 @@
       		<div class="masthead-heading text-uppercase">Menampilkan jumlah virus senja dan beberapa peralatan senja</div>
     	</div>
     </header>
-	<a style="margin-left: 45%; margin-top: 100px; font-size: 50px;" href="{{ url('/donasi/create') }}" class="btn btn-light">Donasi</a>
-	@foreach ($donasi as $row)
-	<table border="1" width="100%">
+
+	<a style="margin-left: 45%; margin-top: 100px; font-size: 30px;" href="{{ url('/donasi/create') }}" class="btn btn-success">Donasi</a>
+
+	
+	<table border="1" class="table table-striped table-hover table-sm table-active">
+		<thead class="thead-dark">
 		<tr>
 			<th>No</th>
 			<th>Foto</th>
@@ -46,20 +32,17 @@
 			<th>Nominal</th>
 			<th>Aksi</th>
 		</tr>
+		</thead>
+		@foreach ($donasi as $row)
 		<tr>
 			<td>{{ $loop->iteration }}</td>
-			<td><img src="{{ $row->getFoto() }}" width="100"></td>
+			<td><img src="{{ $row->getFoto() }}" width="100" height="80"></td>
 			<td>{{ $row->nama }}</td>
 			<td>{{ $row->tanggal }}</td>
 			<td>{{ $row->nominal }}</td>
 			<td><a href="{{ url('donasi') }}/{{ $row->id }}" class="btn btn-dark btn-block">Delete</a></td>
 		</tr>
-		<tr>
-                                <td colspan="5" align="right"><strong>Terkumpul :</strong></td>
-                                <td align="right"><strong>Rp. {{ number_format($row->terkumpul) }}</strong></td>
-
-                            </tr>
-	</table>
 	@endforeach
+	</table>
 </body>
 @endsection

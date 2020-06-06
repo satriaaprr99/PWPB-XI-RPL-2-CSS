@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\donasi;
+use Auth;
+use Alert;
+use Carbon\Carbon;
 
 class DonasiController extends Controller
 {
     public function index(){
-    	$data['donasi'] = \App\donasi::OrderBy('nama')->get();
+    	$data['donasi'] = \App\donasi::OrderBy('id')->get();
     	return view('donasi', $data);
     }
     public function create(){
@@ -25,6 +30,7 @@ class DonasiController extends Controller
     	$input = $request->all();
 
     	$donasi = new \App\donasi;
+        // $donasi->user_id = Auth::user()->id;
 		$donasi->nama = $input['nama'];
 		$donasi->tanggal = $input['tanggal'];
 		$donasi->nominal = $input['nominal'];
@@ -37,9 +43,9 @@ class DonasiController extends Controller
 		  	$donasi->save();
 		  }  
 
-        $donasi = donasi::where('user_id', Auth::user()->id)->where('status',0)->first();
-        $donasi->terkumpul = $donasi->terkumpul+$donasi->nominal*$request->terkumpul;
-        $status = $donasi->update();
+        // $donasi = donasi::where('user_id', Auth::user()->id)->where('status',0)->first();
+        // $donasi->terkumpul = $donasi->terkumpul+$donasi->nominal*$request->terkumpul;
+        // $status = $donasi->update();
 
 
     	if ($status) {
