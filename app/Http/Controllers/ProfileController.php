@@ -25,33 +25,29 @@ class ProfileController extends Controller
             'password'  => 'confirmed',
         ]);
 
-
-
     	$user = User::where('id', Auth::user()->id)->first();
     	$user->name = $request->name;
     	$user->email = $request->email;
     	$user->nohp = $request->nohp;
     	$user->alamat = $request->alamat;
-
-        if($request->hasFile('gambar')){
-            $request->file('gambar')->move('avatar/', $request->file('gambar')->getClientOriginalName());
-            $user->gambar = $request->file('gambar')->getClientOriginalName();
-            $user->save();
-        } 
-
+        $user->foto = $request->foto;
     	if(!empty($request->password))
     	{
     		$user->password = Hash::make($request->password);
     	}
+
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('avatar/', $request->file('foto')->getClientOriginalName());
+            $user->foto = $request->file('foto')->getClientOriginalName();
+            $user->save();
+          } 
     	
     	$status = $user->update();
 
     	if ($status) {
-            return redirect('profile')->with('success','Data Berhasil DiEdit');
-        } else {
-            return redirect('profile')->with('error', 'Data Gagal DiEdit');
+            return redirect('/profile')->with('success', 'Data Berhasil Ditambahkan');
+        }else{
+            return redirect('/profile')->with('error', 'Data gagal Ditambahkan');
         }
     }
-
-
 }

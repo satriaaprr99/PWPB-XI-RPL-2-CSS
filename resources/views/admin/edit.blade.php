@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
+<br><br>
 <div class="container">
   <div class="modal-body">
     <form action="/admin/{{$barangs->id}}/update" method="post" enctype="multipart/form-data">
       @csrf
 
         <div class="form-group">
-          <label for="nama_barang">Upload Gambar</label>
+          <label for="gambar">Upload Gambar</label>
           <input name="gambar" type="file" class="form-control" id="gambar" value="{{ old('barangs', @$barangs->gambar) }}">
         </div>
 

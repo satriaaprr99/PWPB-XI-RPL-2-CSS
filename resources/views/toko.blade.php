@@ -4,18 +4,15 @@
 
 <style type="text/css">
     body{
-        margin-top: -25px;
+        margin-top: 50px;
     }
 </style>
 <body>
-    <header class="masthead3">
-            <div class="container">
-                <div class="masthead-subheading">Berikut adalah toko peralatan kesehatan    </div>
-                <div class="masthead-heading text-uppercase">Di Indonesia</div>
-            </div>
-        </header>
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-12 mb-4">
+            <img src="{{ url('images/logo.png') }}" class="rounded mx-auto d-block" width="300">
+        </div>
         @foreach($barangs as $barang)
         <div class="col-md-4 ">
             <div class="card mb-4">
@@ -28,7 +25,8 @@
                         <strong>Keterangan :</strong> <br>
                         {{ $barang->keterangan }}
                     </p>
-                    <a href="{{ url('pesan') }}/{{ $barang->id }}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Beli</a>
+                    <a href="{{ url('pesan') }}/{{ $barang->id }}" class="btn btn-primary"><i class="fa fa-shopping-cart">
+                            </i> Beli</a>
                 </div>
             </div>
         </div>

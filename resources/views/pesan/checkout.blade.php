@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
+<br><br>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ url('toko') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
+            <a href="{{ url('home') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
         <div class="col-md-12 mt-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url('toko') }}">Toko Kesehatan</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Check Out</li>
                 </ol>
             </nav>
@@ -69,5 +68,4 @@
         
     </div>
 </div>
-</body>
 @endsection

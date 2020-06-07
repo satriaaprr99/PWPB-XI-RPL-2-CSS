@@ -12,6 +12,7 @@
         
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        
 
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -20,12 +21,13 @@
 
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="covid/css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.CSS') }}">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
 
     <body id="page-top">
+
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="{{ url('/home') }}">Green Healthy</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
                
@@ -42,7 +44,6 @@
                             @endif
                         @else
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('korona') }}">Data Covid</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('/donasi') }}">Donasi</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('/berita') }}">Berita</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('toko') }}">Toko</a></li>
                         <li class="nav-item">
@@ -53,9 +54,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
                                     <a class="dropdown-item" href="{{ url('history') }}">Riwayat Pemesanan</a>
-                                    @if(auth::user()->status == 'admin')
                                     <a class="dropdown-item" href="{{ url('admin') }}">Halaman Admin</a>
-                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -85,6 +84,24 @@
             </div>
         </nav>
 
+        <!-- Alert -->
+        @if(session('success'))
+        <div class="container">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Selamat!</strong> {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div class="alert alert-danger" role="alert">
+          {{ session('error') }}
+        </div>
+        @endif
+        
         <main class="py-4">
             @yield('content')
         </main>

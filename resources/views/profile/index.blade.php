@@ -1,15 +1,7 @@
 @extends('layouts.app')
+
 @section('content')
-
-<style type="text/css">
-  body{
-      background-color: grey;
-      margin-top: 50px;
-      color: black;
-  }
-</style>
-
-<body>
+<br><br>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -30,8 +22,8 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <img src="{{$user->getAvatar()}}" width="100">
-                            </tr>
+                                <img src="{{$user->getAvatar()}}" style="height: 150px; width: 150px; border-radius: 30px;">
+                            </tr><br>
                             <tr>
                                 <td>Nama</td>
                                 <td>:</td>
@@ -75,12 +67,12 @@
               @csrf
 
               <div class="form-group">
-                <label for="gambar">Upload Gambar</label>
-                <input name="gambar" type="file" class="form-control" id="gambar" value="{{ $user->gambar }}">
+                <label for="foto">Upload Foto Profile</label>
+                <input name="foto" type="file" class="form-control" id="foto" value="{{ $user->foto }}">
               </div>
 
               <div class="form-group">
-                <label for="name">Nama</label>
+                <label for="name">Nama Lengkap</label>
                 <input name="name" type="text" class="form-control" id="name" value="{{ $user->name }}">
               </div>
 
@@ -121,5 +113,4 @@
 
     </div>
 </div>
-</body>
 @endsection
