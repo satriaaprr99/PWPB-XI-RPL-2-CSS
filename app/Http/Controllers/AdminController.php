@@ -12,9 +12,10 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function indexbarang(){
+    public function index(){
     	$data['barangs'] = DB::table('barangs')->get();
-    	return view('admin.index', $data);
+        $data2['berita'] = DB::table('berita')->get();
+    	return view('admin.index', $data, $data2 );
     }
 
     public function tambahbarang(Request $request){
@@ -29,16 +30,29 @@ class AdminController extends Controller
         $this->validate($request, $rule);
 
         $input = $request->all();
-        unset($input['_token']);
-        $status = \DB::table('barangs')->insert($input);
+        // unset($input['_token']);
+        // $status = \DB::table('barangs')->insert($input);
+
+        $barang = new \App\barang;
+        $barang->nama_barang = $input['nama_barang'];
+        $barang->harga = $input['harga'];
+        $barang->stok = $input['stok'];
+        $barang->keterangan = $input['keterangan'];
+        $barang->gambar = $input['gambar'];
+        $status = $barang->save();
+
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->move('uploads/', $request->file('gambar')->getClientOriginalName());
+            $barang->gambar = $request->file('gambar')->getClientOriginalName();
+            $barang->save();
+          }
 
         if ($status) {
             return redirect('/admin')->with('success','Data Berhasil Ditambahkan');
         } else {
             return redirect('/admin/tambah')->with('error', 'Data Gagal Ditambahkan');
         }
-    	
-    	return $request->all();
+
     }
 
     public function editbarang($id){
@@ -57,10 +71,22 @@ class AdminController extends Controller
         $this->validate($request, $rule);
 
         $input = $request->all();
-        unset($input['_token']);
-        unset($input['_method']);
+        // unset($input['_token']);
+        // $status = \DB::table('barangs')->insert($input);
 
-        $status = \DB::table('barangs')->where('id', $id)->update($input);
+        $barang = \App\barang::find($id);
+        $barang->nama_barang = $input['nama_barang'];
+        $barang->harga = $input['harga'];
+        $barang->stok = $input['stok'];
+        $barang->keterangan = $input['keterangan'];
+        $barang->gambar = $input['gambar'];
+        $status = $barang->save();
+
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->move('uploads/', $request->file('gambar')->getClientOriginalName());
+            $barang->gambar = $request->file('gambar')->getClientOriginalName();
+            $barang->save();
+          }
 
         if ($status) {
             return redirect('/admin')->with('success','Data Berhasil Diupdate');
@@ -82,14 +108,6 @@ class AdminController extends Controller
 
 
     //data Berita
-
-    public function indexberita(){
-    	// $data['berita'] = \DB::table('berita')->get();
-    	// return view('berita', $data);
-
-    	$data['berita'] = \App\Berita::OrderBy('judul')->get();
-    	return view('berita', $data);
-    }
 
     public function createberita(){
     	return view('create.formBerita');
@@ -163,10 +181,20 @@ class AdminController extends Controller
 		  }  
 
 		if ($status) {
-			return redirect('/berita')->with('success', 'Data Berhasil Diubah');
+			return redirect('/admin')->with('success', 'Data Berhasil Diubah');
 		}else{
-			return redirect('/berita/create')->with('error', 'Data gagal Diubah');
+			return redirect('/admin/berita/$id/edit')->with('error', 'Data gagal Diubah');
 		}	
+    }
+
+    public function hapusberita(Request $request, $id){
+         $status = \DB::table('berita')->where('id', $id)->delete();
+
+         if ($status) {
+            return redirect('/admin')->with('success','Data Berhasil Dihapus');
+        } else {
+            return redirect('/admin')->with('error', 'Data Gagal Dihapus');
+        }
     }
 
 }

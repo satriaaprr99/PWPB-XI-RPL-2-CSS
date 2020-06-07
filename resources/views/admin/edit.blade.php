@@ -8,7 +8,7 @@
       @csrf
 
         <div class="form-group">
-          <label for="nama_barang">Upload Gambar</label>
+          <label for="gambar">Upload Gambar</label>
           <input name="gambar" type="file" class="form-control" id="gambar" value="{{ old('barangs', @$barangs->gambar) }}">
         </div>
 

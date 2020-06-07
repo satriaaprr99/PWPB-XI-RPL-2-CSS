@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'status', 'name', 'email', 'password',
+        'status', 'name', 'email', 'password', 'foto',
     ];
 
     protected $hidden = [
@@ -27,10 +27,10 @@ class User extends Authenticatable
     }
 
     public function getAvatar(){
-        if(!$this->gambar){
+        if(!$this->foto){
             return asset('avatar/default.png');
         }
 
-        return asset('avatar/' . $this->gambar);
+        return asset('avatar/' . $this->foto);
     }
 }

@@ -9,7 +9,7 @@ class Berita extends Model
     protected $table = 'berita';
     protected $fillable = ['judul', 'deskripsi', 'foto'];
 
-    public function 	getFoto(){
+    public function getFoto(){
     	if (!$this->foto) {
     		return asset('foto/default.png');
     	}

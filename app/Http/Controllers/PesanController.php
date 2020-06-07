@@ -37,6 +37,7 @@ class PesanController extends Controller
 
     	//cek validasi
     	$cek_pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
+        
     	//simpan ke database pesanan
     	if(empty($cek_pesanan))
     	{

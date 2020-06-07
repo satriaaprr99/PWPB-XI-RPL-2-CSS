@@ -29,11 +29,13 @@ Route::get('checkout', 'PesanController@checkout');
 Route::get('checkout/{id}','PesanController@delete');
 Route::get('konfirmasi-checkout', 'PesanController@konfirmasi');
 
-Route::get('/berita', 'BeritaController@index');
-Route::get('/berita/create', 'BeritaController@create');
-Route::post('/berita', 'BeritaController@store');
-Route::get('/berita/{id}/edit', 'BeritaController@edit');
-Route::patch('/berita/{id}', 'BeritaController@update');
+Route::get('/berita', 'HomeController@indexberita');
+Route::get('/admin/berita', 'AdminController@index');
+Route::get('/admin/berita/create', 'AdminController@createberita');
+Route::post('/admin/berita', 'AdminController@storeberita');
+Route::get('/admin/berita/{id}/edit', 'AdminController@editberita');
+Route::patch('/admin/berita/{id}', 'AdminController@updateberita');
+Route::get('/admin/berita/{id}', 'AdminController@hapusberita');
 
 Route::get('profile', 'ProfileController@index');
 Route::post('profile', 'ProfileController@update');
@@ -43,7 +45,7 @@ Route::get('history/{id}', 'HistoryController@detail');
 
 Route::get('/toko', 'HomeController@toko');
 
-Route::get('admin', 'AdminController@indexbarang');
+Route::get('admin', 'AdminController@index');
 Route::post('/admin/tambah', 'AdminController@tambahbarang');
 Route::get('/admin/{id}/edit', 'AdminController@editbarang');
 Route::post('/admin/{id}/update', 'AdminController@updatebarang');

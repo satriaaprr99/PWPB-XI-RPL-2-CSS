@@ -28,19 +28,12 @@
 </style>
 
 <body>
-	<header class="masthead2">
-    <div class="container">
-      <div class="masthead-subheading">Selamat datang di web para senjakiawan</div>
-      <div class="masthead-heading text-uppercase">Menampilkan jumlah virus senja dan beberapa peralatan senja</div>
-    </div>
-  </header>
   <br><br><br><br>
-<a style="margin-left: 45%;" href="{{ url('/berita/create') }}" class="btn btn-light">Tambah Data</a>
 	@foreach ($berita as $row)
 	<br>
 	<div class="container">
 		<div class="foto">
-			<div><img src="{{ $row->getFoto()}}"width="100"></div>
+			<div><img src="{{ $row->getFoto() }}"width="100"></div>
 		</div>
 		<div class="judul">
 			<div>{{ $row->judul }}</div>

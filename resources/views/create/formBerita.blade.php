@@ -37,7 +37,7 @@
 		</ul>
 	</div>
 	@endif
-	<form action="{{ url('berita', @$berita->id ) }}" method="POST" enctype="multipart/form-data">
+	<form action="{{ url('admin/berita', @$berita->id ) }}" method="POST" enctype="multipart/form-data">
 			@csrf
 
       @if(!empty($berita))

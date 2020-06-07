@@ -30,14 +30,24 @@ class ProfileController extends Controller
     	$user->email = $request->email;
     	$user->nohp = $request->nohp;
     	$user->alamat = $request->alamat;
+        $user->foto = $request->foto;
     	if(!empty($request->password))
     	{
     		$user->password = Hash::make($request->password);
     	}
-    	
-    	$user->update();
 
-    	Alert::success('User Sukses diupdate', 'Success');
-    	return redirect('profile');
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('avatar/', $request->file('foto')->getClientOriginalName());
+            $user->foto = $request->file('foto')->getClientOriginalName();
+            $user->save();
+          } 
+    	
+    	$status = $user->update();
+
+    	if ($status) {
+            return redirect('/profile')->with('success', 'Data Berhasil Ditambahkan');
+        }else{
+            return redirect('/profile')->with('error', 'Data gagal Ditambahkan');
+        }
     }
 }

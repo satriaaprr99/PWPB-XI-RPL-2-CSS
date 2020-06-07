@@ -24,14 +24,14 @@
           @foreach ($barangs as $b)
         <tr>
           <th scope="row">{{ $no++ }}</th>
-          <td>{{ $b->gambar }}</td>
+          <td><img src="{{ 'Uploads' }}/{{$b->gambar}}" width="50" height="50"></td>
           <td>{{ $b->nama_barang }}</td>
           <td>Rp. {{ number_format($b->harga) }}</td>
           <td>{{ $b->stok }}</td>
           <td>{{ $b->keterangan }}</td>
           <td>
             <a class="btn btn-primary btn-sm" href="/admin/{{$b->id}}/edit"><i class="fa fa-edit"></i></a>
-            <a class="btn btn-danger btn-sm" href="/admin/{{$b->id}}/hapus" onclick="return confirm('Anda yakin akan menghapus data ?');" ><i class="fa fa-trash"></i></a> 
+            <a class="btn btn-danger btn-sm" href="/admin/{{$b->id}}" onclick="return confirm('Anda yakin akan menghapus data ?');" ><i class="fa fa-trash"></i></a> 
           </td>
         </tr>
           @endforeach
@@ -49,7 +49,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="/admin/tambah" method="post">
+            <form action="/admin/tambah" method="post" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
                 <label for="nama_barang">Nama Barang</label>
@@ -72,8 +72,8 @@
               </div>
 
               <div class="form-group">
-                <label for="nama_barang">Upload Gambar</label>
-                <input name="gambar" type="text" class="form-control" id="gambar">
+                <label for="gambar">Upload Gambar</label>
+                <input name="gambar" type="file" class="form-control" id="gambar">
               </div>
             
           </div>
@@ -87,7 +87,73 @@
     </div>
 
     <div class="p-3 mb-2 bg-dark text-white">Data Berita</div>
-    <a style="margin-left: 45%;" href="{{ url('/admin/Tambah') }}" class="btn btn-light">Tambah Data</a>
+    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modalberita">
+      <i class="fa fa-plus"></i> Tambah Data
+    </button>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Gambar</th>
+          <th scope="col">Judul Berita</th>
+          <th scope="col">Deskripsi</th>
+          <th scope="col">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+          <?php $no = 1; ?>
+          @foreach ($berita as $news)
+        <tr>
+          <th scope="row">{{ $no++ }}</th>
+          <td><img src="{{ 'Uploads' }}/{{$news->foto}}" width="50" height="50"></td>
+          <td>{{ $news->judul }}</td>
+          <td>{{ $news->deskripsi }}</td>
+          <td>
+            <a class="btn btn-primary btn-sm" href="/admin/berita/{{$news->id}}/edit"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-danger btn-sm" href="/admin/berita/{{$news->id}}" onclick="return confirm('Anda yakin akan menghapus data ?');" ><i class="fa fa-trash"></i></a> 
+          </td>
+        </tr>
+          @endforeach
+      </tbody>
+    </table>
+
+
+    <!-- Modal tambah -->
+    <div class="modal fade" id="modalberita" tabindex="-1" role="dialog" aria-labelledby="modalberitaLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalberitaLabel">Tambah Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/admin/berita/create" method="post" enctype="multipart/form-data">
+              @csrf
+              <div class="form-group">
+                <label for="foto">Upload Gambar</label>
+                <input name="foto" type="file" class="form-control" id="foto">
+              </div>
+
+              <div class="form-group">
+                <label for="judul">Judul Berita</label>
+                <input name="judul" type="text" class="form-control" id="judul">
+              </div>
+
+              <div class="form-group">
+                <label for="deskripsi">Deskripsi</label>
+                <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
+              </div>         
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+          </div>
+           </form>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
