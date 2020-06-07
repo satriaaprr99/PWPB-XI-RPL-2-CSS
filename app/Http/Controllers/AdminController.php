@@ -197,4 +197,10 @@ class AdminController extends Controller
         }
     }
 
+    public function detail($id)
+    {
+        $berita = \DB::table('berita')->where('id', $id)->first();
+
+        return view('create.index', compact('berita'));
+    }
 }

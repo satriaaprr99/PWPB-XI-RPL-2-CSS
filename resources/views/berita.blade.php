@@ -33,19 +33,15 @@
 	<br>
 	<div class="container">
 		<div class="foto">
-			<div><img src="{{ $row->getFoto() }}"width="100"></div>
+			<div>
+				<a href="{{ url('berita') }}/{{ $row->id }}"><img src="{{ $row->getFoto() }}"width="100"></a>
+			</div>
 		</div>
 		<div class="judul">
 			<div>{{ $row->judul }}</div>
 		</div>
 		<div class="deskripsi">
 			<div>{{ $row->deskripsi }}</div>
-		</div>
-		<div class="button">
-			<div><a class="btn btn-dark btn-block" href="{{ url('/berita/' . $row->id . '/edit') }}">Edit</a></div>
-		</div>
-		<div class="button">
-			<div><a href="" class="btn btn-dark btn-block">Delete</a></div>
 		</div>
 	</div>
 	@endforeach

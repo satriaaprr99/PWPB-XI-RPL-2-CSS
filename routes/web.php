@@ -29,6 +29,7 @@ Route::get('checkout', 'PesanController@checkout');
 Route::get('checkout/{id}','PesanController@delete');
 Route::get('konfirmasi-checkout', 'PesanController@konfirmasi');
 
+Route::get('berita/{id}', 'AdminController@detail');
 Route::get('/berita', 'HomeController@indexberita');
 Route::get('/admin/berita', 'AdminController@index');
 Route::get('/admin/berita/create', 'AdminController@createberita');
