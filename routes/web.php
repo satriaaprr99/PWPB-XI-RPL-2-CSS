@@ -22,7 +22,7 @@ Route::get('/korona', 'HomeController@korona');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'DonasiController@index')->name('home');
 Route::get('pesan/{id}', 'PesanController@index');
 Route::post('pesan/{id}', 'PesanController@pesan');
 Route::get('checkout', 'PesanController@checkout');
@@ -37,6 +37,11 @@ Route::post('/admin/berita', 'AdminController@storeberita');
 Route::get('/admin/berita/{id}/edit', 'AdminController@editberita');
 Route::patch('/admin/berita/{id}', 'AdminController@updateberita');
 Route::get('/admin/berita/{id}', 'AdminController@hapusberita');
+
+Route::get('/donasi', 'DonasiController@index');
+Route::get('/donasi/create', 'DonasiController@create');
+Route::post('/donasi', 'DonasiController@store');
+Route::get('/donasi/{id}', 'DonasiController@destroy');
 
 Route::get('profile', 'ProfileController@index');
 Route::post('profile', 'ProfileController@update');

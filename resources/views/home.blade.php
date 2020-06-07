@@ -42,6 +42,32 @@
       </div>
     </div>
         </section>
+    <div class="container">
+        <a style="display: block; font-size: 50px;" href="{{ url('/donasi/create') }}" class="btn btn-success">Donasi</a>
+      <table border="1" class="table table-striped table-hover table-sm table-active">
+        <thead class="thead-dark">
+        <tr>
+          <th>No</th>
+          <th>Foto</th>
+          <th>Nama</th>
+          <th>Tanggal</th>
+          <th>Nominal</th>
+          <th>Aksi</th>
+        </tr>
+        </thead>
+        @foreach ($donasi as $row)
+        <tr>
+          <td>{{ $loop->iteration }}</td>
+          <td><img src="{{ $row->getFoto() }}" width="50" height="50"></td>
+          <td>{{ $row->nama }}</td>
+          <td>{{ $row->tanggal }}</td>
+          <td>Rp. {{ number_format($row->nominal) }}</td>
+          <td><a href="{{ url('donasi') }}/{{ $row->id }}" class="btn btn-dark btn-block">Delete</a></td>
+        </tr>
+      @endforeach
+      </table>
+    </div>
+
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="portfolio">
             <div class="container">

@@ -54,7 +54,9 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
                                     <a class="dropdown-item" href="{{ url('history') }}">Riwayat Pemesanan</a>
+                                    @if(Auth::user()->status == 'admin')
                                     <a class="dropdown-item" href="{{ url('admin') }}">Halaman Admin</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
