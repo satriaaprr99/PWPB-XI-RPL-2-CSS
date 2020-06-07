@@ -15,11 +15,13 @@ class CreateDonasi extends Migration
     {
         Schema::create('donasi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama', '100');
+            $table->string('nama');
+            $table->string('email');
+            $table->string('nohp');
+            $table->string('pembayaran');
             $table->date('tanggal');
             $table->integer('nominal');
             $table->integer('total_nominal');
-            $table->string('foto');
             $table->timestamps();
         });
     }

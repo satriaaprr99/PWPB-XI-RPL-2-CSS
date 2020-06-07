@@ -57,6 +57,7 @@
                                     @if(Auth::user()->status == 'admin')
                                     <a class="dropdown-item" href="{{ url('admin') }}">Halaman Admin</a>
                                     @endif
+                                    <a class="dropdown-item" href="{{ url('contact') }}">Contact</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

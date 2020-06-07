@@ -32,10 +32,12 @@ class DonasiController extends Controller
     	$donasi = new \App\donasi;
         // $donasi->user_id = Auth::user()->id;
 		$donasi->nama = $input['nama'];
+		$donasi->email = $input['email'];
+		$donasi->nohp = $input['nohp'];
+		$donasi->pembayaran = $input['pembayaran'];
 		$donasi->tanggal = $tanggal;
 		$donasi->nominal = $input['nominal'];
 		$donasi->total_nominal = 0;
-		$donasi->foto = $input['foto'];
 		$status = $donasi->save();
 
     	if ($request->hasFile('foto')) {
